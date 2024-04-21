@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="utf-8" />
+  <!-- 浏览器图标 -->
+  <link rel="Shortcut Icon" href="./PBH资料/PBH-logo-7-白底黑字-ico.ico">
+  <link rel="stylesheet" href="">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>PBH官网-贪吃蛇</title>
+  <!--设置过期时间设置0为直接过期并清除缓存-->
+  <!-- <meta http-equiv="Expires" content="0"> -->
+  <!--设置不缓存页面-->
+  <!-- <meta http-equiv="Pragma" content="no-cache"> -->
+  <!--设置不修改消息存储-->
+  <!-- <meta http-equiv="Cache-control" content="no-cache"> -->
+  <!--同上-->
+  <meta http-equiv="Cache" content="no-cache">
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+    name='viewport' />
+  <!-- 字体样式 -->
+  <link rel="stylesheet" href="./css/字体.css">
+  <!-- 注意Main CSS -->
+  <link href="./css/main.css" rel="stylesheet" />
+  <!--注意Animation CSS -->
+  <link href="./css/aos.css" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      background: url(./PBH资料/贪吃蛇/背景.png) no-repeat;
+      background-size: cover;
+      position: absolute;
+    }
+
+    .btnbox {
+      width: 200px;
+      height: 300px;
+      margin-top: 100px;
+      /* background: orange; */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      /* top: 50%;
+      transform:translateY(-50%) */
+    }
+
+    .btnbox button {
+      width: 100px;
+      height: 50px;
+      font-size: 23px;
+      margin-top: 20px;
+      background: rgb(68, 57, 186);
+      color: white;
+      /* border-radius: 30px; */
+
+    }
+
+    .map {
+      width: 550px;
+      height: 380px;
+      background: url(./PBH资料/贪吃蛇/mapbg.png);
+      /* position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0; */
+      position: relative;
+      top: 30%;
+      left: 50%;
+
+      margin: auto;
+      box-shadow: 0px 0px 100px black inset, 0px 0px 30px white;
+    }
+
+    .map>div {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      border-radius: 50%;
+      box-shadow: 0px 0px 10px rgb(255, 255, 255);
+    }
+
+    div.head {
+      background: radial-gradient(#3ab8ce, #6cafc6);
+    }
+
+    div.body {
+      background: radial-gradient(#fa911a, #fa911a);
+    }
+
+    div.food {
+      background: radial-gradient(#aaeb76, #85dd3e);
+      animation: foot 1s linear infinite;
+
+
+    }
+
+    @keyframes foot {
+      0% {
+        box-shadow: 0px 0px 10px white;
+      }
+
+      50% {
+        box-shadow: 0px 0px 60px rgb(205, 107, 50);
+      }
+
+      100% {
+        box-shadow: 0px 0px 10px white;
+      }
+    }
+
+    .score {
+      font-size: 25px;
+      color: white;
+
+    }
+
+    .score span {
+      color: rgb(230, 89, 89);
+      font-weight: bold;
+    }
+
+    .panbg {
+      width: 550px;
+      height: 360px;
+      background: rgba(203, 203, 203, 0.5) url(./PBH资料/贪吃蛇/gameover.png) no-repeat;
+      background-size: 380px;
+      background-position: center;
+      position: fixed;
+      z-index: 999;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 导航栏 -->
+  <nav class="topnav navbar navbar-expand-lg navbar-dark bg-primary" style=" position: sticky;top: 0px;z-index: 10;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="./PBH.logo.html">
+          <img src="./PBH资料/测试图标.png" alt="" width="60px">
+        </a>
+      </div>
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02"
+        aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse" id="navbarColor02">
+        <ul class="navbar-nav mr-auto d-flex align-items-center">
+          <li class="nav-item" style="font-size: 20px;">
+            <a class="nav-link" href="./index.html">返回首页</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="panbg"></div>
+  <div class="btnbox">
+    <div class="score">分数: <span>0</span></div>
+    <button id="start">开始游戏</button>
+    <button id="pause">暂停游戏</button>
+    <button id="restart">重新开始</button>
+  </div>
+  <div class="map"> </div>
+
+  <audio src="./PBH资料/贪吃蛇/tanchishe.mp3" autoplay></audio>
+  <script src="./js/贪吃蛇/food.js"></script>
+  <script src="./js/贪吃蛇/snake.js"></script>
+  <script src="./js/贪吃蛇/game.js"></script>
+  <script>
+    const game = new Game(".map", ".score span", ".panbg")
+    //拿到按钮
+    const start = document.querySelector("#start")
+
+    const pause = document.querySelector("#pause")
+    const restart = document.querySelector("#restart")
+
+    start.onclick = function () {
+      game.start()
+    }
+    pause.onclick = function () {
+      game.pause()
+    }
+    restart.onclick = function () {
+      game.restart()
+    }
+    //键盘监听  左 37 上 38 右 39 下 40
+    document.onkeydown = function (e) {
+      console.log(e.keyCode)
+      switch (e.keyCode) {
+        //WASD w(上-->87),a(左-->65),s(下-->83),d(右-->68)
+        case 87:
+          game.change("top")
+          break;
+        case 83:
+          game.change("bottom")
+          break;
+        case 65:
+          game.change("left")
+          break;
+        case 68:
+          game.change("right")
+          break;
+        //方向
+        case 37:
+          game.change("left")
+          break;
+        case 38:
+          game.change("top")
+          break;
+        case 39:
+          game.change("right")
+          break;
+        case 40:
+          game.change("bottom")
+          break;
+        case 13:
+          game.start()
+          break;
+        case 32:
+          game.pause()
+          break;
+      }
+
+
+    }
+  </script>
+
+  <script>
+    window.onload = function () {
+      //存放音乐列表，根据音乐文件路径，进行填写
+      var musicList = ["./PBH资料/贪吃蛇/tanchishe.mp3"]
+      playMusic(musicList);
+    }
+
+    function playMusic(musicList) {
+      var myAudio = new Audio();
+      //是否进行预加载
+      myAudio.preload = false;
+      //是否显示隐藏按钮
+      myAudio.controls = true;
+      myAudio.hidden = true;
+      //从音乐列表中，获取最后一个音乐（并删除）
+      var src = musicList.pop();
+      myAudio.src = src;
+      //将最后一个音乐添加到数组的开头，这样实现循环
+      musicList.unshift(src);
+      //绑定音乐结束事件，当音乐播放完成后，将会触发playEndedHandler方法
+      myAudio.addEventListener("ended", playEndedHandler, false);
+      //播放当前音乐
+      myAudio.play();
+      document.getElementById("music").appendChild(myAudio);
+      //将循环播放关闭，如果开启，将不能触发playEndedHandler方法，只能进行单曲循环
+      myAudio.loop = false;
+
+      function playEndedHandler() {
+        src = musicList.pop();
+        myAudio.src = src;
+        musicList.unshift(src);
+        myAudio.play();
+      }
+    }
+  </script>
+  <script>
+    //js后缀加个时间戳每回更新都会改变，浏览器视其为新的js不会进行缓存
+    document.write('<script type="text/javascript" src="js/test.js?time=' + new Date().getTime() + '"><' + '/' + 'script>');
+    //css也同上
+    document.write('<link rel="stylesheet" href="css/test.css?time=' + new Date().getTime() + '"/>');
+  </script>
+  <!-- js文件 -->
+  <script src="./js/jquery.min.js" type="text/javascript"></script>
+  <script src="./js/popper.min.js" type="text/javascript"></script>
+  <script src="./js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="./js/share.js" type="text/javascript"></script>
+  <script src="./js/functions.js" type="text/javascript"></script>
+
+  <!-- 动画文件 -->
+  <script src="./js/aos.js" type="text/javascript"></script>
+  <noscript>
+    <style>
+      *[data-aos] {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+    </style>
+  </noscript>
+  <script>
+    AOS.init({
+      duration: 700
+    });
+  </script>
+
+</body>
+
+</html>

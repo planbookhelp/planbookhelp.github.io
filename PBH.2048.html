@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8" />
+    <!-- 浏览器图标 -->
+    <link rel="Shortcut Icon" href="./PBH资料/PBH-logo-7-白底黑字-ico.ico">
+    <link rel="stylesheet" href="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!-- 浏览器标题 -->
+    <title>PBH官网-2048游戏</title>
+    <!--设置过期时间设置0为直接过期并清除缓存-->
+    <!-- <meta http-equiv="Expires" content="0"> -->
+    <!--设置不缓存页面-->
+    <!-- <meta http-equiv="Pragma" content="no-cache"> -->
+    <!--设置不修改消息存储-->
+    <!-- <meta http-equiv="Cache-control" content="no-cache"> -->
+    <!--同上-->
+    <meta http-equiv="Cache" content="no-cache">
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+        name='viewport' />
+    <!-- 字体样式 -->
+    <link rel="stylesheet" href="./css/字体.css">
+    <!-- 注意Main CSS -->
+    <link href="./css/main.css" rel="stylesheet" />
+    <!--注意Animation CSS -->
+    <link href="./css/aos.css" rel="stylesheet" />
+    <style>
+        body,
+        p,
+        div {
+            -webkit-user-select: none;
+            /* Chrome, Safari, Opera */
+            -moz-user-select: none;
+            /* Firefox */
+            -ms-user-select: none;
+            /* IE 10+ */
+            user-select: none;
+            /* Standard syntax */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #c4c4c3;
+            font-family: Arial, sans-serif;
+            background-image: linear-gradient(to right, #e79039, #9c5656, #8f21b1, #3bbb65);
+            background-size: 200% auto;
+            animation: gradient 15s linear infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 100%;
+            }
+
+
+            100% {
+                background-position: 100% 0%;
+            }
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .game {
+            padding: 10px;
+            border-radius: 9px;
+            background-color: #b6865c00;
+            box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.9);
+        }
+
+        .game-row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .game-cell {
+            width: 5rem;
+            height: 5rem;
+            border-radius: 6px;
+            margin-right: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #eee;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .score {
+            margin: 10px 0px 10px 0px;
+            text-align: center;
+            font-size: 2rem;
+            color: #ffffffcd;
+        }
+
+        .score-h {
+            margin: 5px 0px 5px 0px;
+            text-align: center;
+            font-size: 2rem;
+            color: #000000cd;
+        }
+
+        .btn {
+            display: block;
+            margin-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 10px 20px;
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            color: #e9e9e9;
+            background-color: #3a678c;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            color: #bebdbd;
+            background-color: #8f8f8fba;
+        }
+
+        .red-button {
+            background-color: rgb(183, 78, 78);
+            color: #e9e9e9;
+        }
+
+        .game-wz {
+            position: absolute;
+            top: 85%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #win-img-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 100;
+        }
+
+        #win-img {
+            width: 20rem;
+
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 100px;
+            right: 20px;
+            cursor: pointer;
+            color: #3a678c;
+            font-size: 2rem;
+        }
+
+        .xiala {
+            background-color: #ffffff44;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .xiala label {
+            margin-right: 10px;
+            font-size: 1.5rem;
+            color: #000000;
+        }
+
+        .xiala select {
+            background-color: transparent;
+            width: 100%;
+            padding: 5px;
+            font-size: 1.8rem;
+            border: none;
+            outline: none;
+            color: #000000;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav class="topnav navbar navbar-expand-lg navbar-dark bg-primary" style=" position: sticky;top: 0px;z-index: 10;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="./PBH.logo.html">
+                    <img src="./PBH资料/测试图标.png" alt="" width="60px">
+                </a>
+            </div>
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02"
+                aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse" id="navbarColor02">
+                <ul class="navbar-nav mr-auto d-flex align-items-center">
+                    <li class="nav-item" style="font-size: 20px;">
+                        <a class="nav-link" href="./index.html">返回首页</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container game-wz">
+
+        <div class="game">
+            <!-- 游戏胜利 -->
+            <div id="win-img-container" style="display:none">
+                <div id="close-btn" class="close-btn">关闭</div>
+                <img id="win-img" src="./PBH资料/moon.png" alt="游戏胜利" />
+            </div>
+            <!-- 修改棋盘大小 -->
+            <div class="xiala">
+                <label for="board-size">选择棋盘大小:</label>
+                <select id="board-size">
+                    <option value="4">4x4</option>
+                    <option value="5">5x5</option>
+                    <option value="6">6x6</option>
+                </select>
+            </div>
+            <!-- 两个分数显示 -->
+            <div id="high-score" class="score-h">最高分: 0</div>
+            <div id="score" class="score">分数: 0</div>
+            <div id="game-board">
+                <!-- 游戏格子动态生成 -->
+            </div>
+            <a href="#" id="start-btn" class="btn">开始游戏</a>
+        </div>
+    </div>
+    <!-- 定义音效js文件 -->
+    <audio id="moveSound" src="./PBH资料/按键1.MP3"></audio>
+    <audio id="clickSound" src="./PBH资料/按键2.MP3"></audio>
+
+    <script text="游戏音效js文件">
+        // 获取音效元素
+        const moveSound = document.getElementById('moveSound');
+        const clickSound = document.getElementById('clickSound');
+
+        // 处理键盘按下事件
+        document.addEventListener('keydown', (event) => {
+            const key = event.key.toLowerCase();
+
+            // 根据用户输入播放音效
+            if (key === 'w' || key === 'a' || key === 's' || key === 'd' || key === 'arrowup' || key === 'arrowleft' || key === 'arrowdown' || key === 'arrowright') {
+                moveSound.play();
+            }
+        });
+
+        // 处理按钮点击事件
+        const playButton = document.getElementById('start-btn');
+        playButton.addEventListener('click', () => {
+            clickSound.play();
+        });
+    </script>
+    <!-- 游戏js文件 -->
+    <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const gameBoard = document.getElementById('game-board');
+            const startBtn = document.getElementById('start-btn');
+            const scoreDisplay = document.getElementById('score');
+            let score = 0;
+            let board = [];
+            let size = 4;
+
+            // 获取选择框数据
+            const boardSizeSelector = document.getElementById('board-size');
+
+            // 棋盘大小
+            boardSizeSelector.addEventListener('change', (event) => {
+                size = parseInt(event.target.value);
+                createBoard();
+                initGame();
+            });
+
+            // 创建游戏格子
+            function createBoard() {
+                gameBoard.innerHTML = '';
+                for (let i = 0; i < size; i++) {
+                    const row = document.createElement('div');
+                    row.classList.add('game-row');
+                    for (let j = 0; j < size; j++) {
+                        const cell = document.createElement('div');
+                        cell.classList.add('game-cell');
+                        row.appendChild(cell);
+                    }
+                    gameBoard.appendChild(row);
+                }
+            }
+
+            // 获取游戏地盘格子文本颜色
+            function getCellTextColor(value) {
+                return value <= 4 ? '#776e65' : '#f9f6f2';
+            }
+
+            // 获取游戏地盘格子背景颜色
+            function getCellBackgroundColor(value) {
+                switch (value) {
+                    case 2: return '#e3c6a8';
+                    case 4: return '#e0ad76';
+                    case 8: return '#f2b179';
+                    case 16: return '#f59563';
+                    case 32: return '#f67c5f';
+                    case 64: return '#f65e3b';
+                    case 128: return '#edcf72';
+                    case 256: return '#edcc61';
+                    case 512: return '#edc850';
+                    case 1024: return '#edc53f';
+                    case 2048: return '#edc22e';
+                    default: return '#cdc1b4';
+                }
+            }
+
+            //加载游戏胜利的图片背景
+            function showWinImg() {
+                const winImgContainer = document.getElementById('win-img-container');
+                const winImg = document.getElementById('win-img');
+
+                // 设置图片源
+                winImg.src = './PBH资料/win.png';
+
+                // 显示图片容器
+                winImgContainer.style.display = 'block';
+            }
+            // 获取关闭按钮和胜利图片的元素
+            const closeBtn = document.getElementById('close-btn');
+            const winImgContainer = document.getElementById('win-img-container');
+
+            // 为关闭按钮添加点击事件监听器
+            closeBtn.addEventListener('click', () => {
+                // 隐藏胜利图片
+                winImgContainer.style.display = 'none';
+                // 显示游戏界面的逻辑，根据你的代码进行实现
+            });
+
+            // 更新游戏格子上的数字和样式
+            function updateBoard() {
+                const cells = document.querySelectorAll('.game-cell');
+                for (let i = 0; i < size; i++) {
+                    for (let j = 0; j < size; j++) {
+                        const cell = cells[i * size + j];
+                        cell.textContent = board[i][j] !== 0 ? board[i][j] : '';
+                        cell.style.backgroundColor = getCellBackgroundColor(board[i][j]);
+                        cell.style.color = getCellTextColor(board[i][j]);
+                    }
+                }
+
+                //游戏胜利处理
+                for (let i = 0; i < size; i++) {
+                    for (let j = 0; j < size; j++) {
+                        //分数达到设定值表示通关
+                        if (board[i][j] === 2048) {
+                            // 弹窗表示通关
+                            alert('恭喜你，成功合成“2048”游戏通关了！');
+                            // 显示胜利图片
+                            showWinImg();
+                        }
+                    }
+                }
+                scoreDisplay.textContent = '分数: ' + score;
+
+            }
+
+            // 在空白位置随机生成数字2
+            function generateNumber() {
+                const emptyCells = [];
+                for (let i = 0; i < size; i++) {
+                    for (let j = 0; j < size; j++) {
+                        if (board[i][j] === 0) {
+                            emptyCells.push({ x: i, y: j });
+                        }
+                    }
+                }
+                if (emptyCells.length === 0) {
+                    return;
+                }
+                const { x, y } = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+                board[x][y] = 2;
+            }
+
+            // 初始化游戏数据
+            function initGame() {
+                score = 0;
+                board = Array(size).fill().map(() => Array(size).fill(0));
+                generateNumber();
+                generateNumber();
+                updateBoard();
+            }
+
+            // 判断游戏是否结束
+            function isGameOver() {
+                for (let i = 0; i < size; i++) {
+                    for (let j = 0; j < size; j++) {
+                        if (board[i][j] === 0) {
+                            return false;
+                        }
+                        if (i !== size - 1 && board[i][j] === board[i + 1][j]) {
+                            return false;
+                        }
+                        if (j !== size - 1 && board[i][j] === board[i][j + 1]) {
+                            return false;
+                        }
+                    }
+                }
+                return true;
+            }
+
+            // 添加一个变量用于存储最高分
+            let highScore = 0;
+
+            // 获取显示最高分
+            const highScoreDisplay = document.getElementById('high-score');
+
+            // 处理游戏结束
+            function handleGameOver() {
+                if (score > highScore) {
+                    highScore = score;
+                    highScoreDisplay.textContent = '最高分: ' + highScore;
+                }
+                alert('游戏结束！你的分数是: ' + score);
+                startBtn.textContent = '开始游戏';
+            }
+
+            // 处理按键事件
+            function handleKeyPress(event) {
+                if (isGameOver()) {
+                    handleGameOver();
+                    return;
+                }
+                const key = event.key;
+                let moved = false;
+
+                switch (key) {
+                    case 'w':
+                    case 'W':
+                    case 'ArrowUp':
+                        moved = moveUp();
+                        break;
+                    case 'a':
+                    case 'A':
+                    case 'ArrowLeft':
+                        moved = moveLeft();
+                        break;
+                    case 's':
+                    case 'S':
+                    case 'ArrowDown':
+                        moved = moveDown();
+                        break;
+                    case 'd':
+                    case 'D':
+                    case 'ArrowRight':
+                        moved = moveRight();
+                        break;
+                }
+
+                if (moved) {
+                    generateNumber();
+                    updateBoard();
+                }
+
+                if (isGameOver()) {
+                    handleGameOver();
+                }
+            }
+            // 注册滑动事件
+            document.addEventListener('touchstart', handleSwipe);
+
+            // 处理滑动事件
+            function handleSwipe(event) {
+                if (isGameOver()) {
+                    handleGameOver();
+                    return;
+                }
+
+                const startX = event.touches[0].clientX;
+                const startY = event.touches[0].clientY;
+                let moved = false;
+
+                document.addEventListener('touchend', handleSwipeEnd);
+
+                function handleSwipeEnd(event) {
+                    const endX = event.changedTouches[0].clientX;
+                    const endY = event.changedTouches[0].clientY;
+
+                    const deltaX = endX - startX;
+                    const deltaY = endY - startY;
+
+                    if (Math.abs(deltaX) < 10 && Math.abs(deltaY) < 10) {
+                        // 忽略较小的滑动距离
+                        return;
+                    }
+
+                    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                        // 横向滑动
+                        if (deltaX > 0) {
+                            // 向右滑动
+                            moved = moveRight();
+                        } else {
+                            // 向左滑动
+                            moved = moveLeft();
+                        }
+                    } else {
+                        // 纵向滑动
+                        if (deltaY > 0) {
+                            // 向下滑动
+                            moved = moveDown();
+                        } else {
+                            // 向上滑动
+                            moved = moveUp();
+                        }
+                    }
+
+                    document.removeEventListener('touchend', handleSwipeEnd);
+
+                    if (moved) {
+                        generateNumber();
+                        updateBoard();
+                    }
+
+                    if (isGameOver()) {
+                        handleGameOver();
+                    }
+                }
+            }
+
+            // 向上移动
+            function moveUp() {
+                let moved = false;
+                for (let j = 0; j < size; j++) {
+                    for (let i = 1; i < size; i++) {
+                        if (board[i][j] !== 0) {
+                            let k = i;
+                            while (k > 0 && board[k - 1][j] === 0) {
+                                board[k - 1][j] = board[k][j];
+                                board[k][j] = 0;
+                                k--;
+                                moved = true;
+                            }
+                            if (k > 0 && board[k - 1][j] === board[k][j]) {
+                                board[k - 1][j] *= 2;
+                                score += board[k - 1][j];
+                                board[k][j] = 0;
+                                moved = true;
+                            }
+                        }
+                    }
+                }
+                return moved;
+            }
+
+            // 向左移动
+            function moveLeft() {
+                let moved = false;
+                for (let i = 0; i < size; i++) {
+                    for (let j = 1; j < size; j++) {
+                        if (board[i][j] !== 0) {
+                            let k = j;
+                            while (k > 0 && board[i][k - 1] === 0) {
+                                board[i][k - 1] = board[i][k];
+                                board[i][k] = 0;
+                                k--;
+                                moved = true;
+                            }
+                            if (k > 0 && board[i][k - 1] === board[i][k]) {
+                                board[i][k - 1] *= 2;
+                                score += board[i][k - 1];
+                                board[i][k] = 0;
+                                moved = true;
+                            }
+                        }
+                    }
+                }
+                return moved;
+            }
+
+            // 向下移动
+            function moveDown() {
+                let moved = false;
+                for (let j = 0; j < size; j++) {
+                    for (let i = size - 2; i >= 0; i--) {
+                        if (board[i][j] !== 0) {
+                            let k = i;
+                            while (k < size - 1 && board[k + 1][j] === 0) {
+                                board[k + 1][j] = board[k][j];
+                                board[k][j] = 0;
+                                k++;
+                                moved = true;
+                            }
+                            if (k < size - 1 && board[k + 1][j] === board[k][j]) {
+                                board[k + 1][j] *= 2;
+                                score += board[k + 1][j];
+                                board[k][j] = 0;
+                                moved = true;
+                            }
+                        }
+                    }
+                }
+                return moved;
+            }
+
+            // 向右移动
+            function moveRight() {
+                let moved = false;
+                for (let i = 0; i < size; i++) {
+                    for (let j = size - 2; j >= 0; j--) {
+                        if (board[i][j] !== 0) {
+                            let k = j;
+                            while (k < size - 1 && board[i][k + 1] === 0) {
+                                board[i][k + 1] = board[i][k];
+                                board[i][k] = 0;
+                                k++;
+                                moved = true;
+                            }
+                            if (k < size - 1 && board[i][k + 1] === board[i][k]) {
+                                board[i][k + 1] *= 2;
+                                score += board[i][k + 1];
+                                board[i][k] = 0;
+                                moved = true;
+                            }
+                        }
+                    }
+                }
+                return moved;
+            }
+
+            // 处理开始按钮点击事件
+            function handleStartBtnClick() {
+                if (startBtn.textContent === '开始游戏') {
+                    startBtn.textContent = '重新开始';
+                    startBtn.classList.add('red-button'); // 添加红色按钮的CSS类
+                    initGame();
+                    document.addEventListener('keydown', handleKeyPress);
+                } else {
+                    startBtn.textContent = '开始游戏';
+                    startBtn.classList.remove('red-button'); // 移除红色按钮的CSS类
+                    document.removeEventListener('keydown', handleKeyPress);
+                }
+            }
+
+            // 绑定开始按钮点击事件
+            startBtn.addEventListener('click', handleStartBtnClick);
+
+            // 初始化游戏
+            createBoard();
+            initGame();
+        });
+    </script>
+    <script>
+        //js后缀加个时间戳每回更新都会改变，浏览器视其为新的js不会进行缓存
+        document.write('<script type="text/javascript" src="js/test.js?time=' + new Date().getTime() + '"><' + '/' + 'script>');
+        //css也同上
+        document.write('<link rel="stylesheet" href="css/test.css?time=' + new Date().getTime() + '"/>');
+    </script>
+    <!-- js文件 -->
+    <script src="./js/jquery.min.js" type="text/javascript"></script>
+    <script src="./js/popper.min.js" type="text/javascript"></script>
+    <script src="./js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="./js/share.js" type="text/javascript"></script>
+    <script src="./js/functions.js" type="text/javascript"></script>
+
+    <!-- 动画文件 -->
+    <script src="./js/aos.js" type="text/javascript"></script>
+    <noscript>
+        <style>
+            *[data-aos] {
+                display: block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        AOS.init({
+            duration: 700
+        });
+    </script>
+</body>
+
+</html>

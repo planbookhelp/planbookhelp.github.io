@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Dynamic Input Boxes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #inputArea {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      width: 80%;
+    }
+
+    .inputBoxWrapper {
+      display: flex;
+      align-items: center;
+      width: calc(25% - 20px);
+    }
+
+    @media (max-width: 600px) {
+      #inputArea {
+        flex-direction: column;
+      }
+
+      .inputBoxWrapper {
+        width: 100%;
+      }
+    }
+
+    .inputBox {
+      flex: 1;
+      padding: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      background-color: #f0f0f0;
+    }
+
+    .addButton {
+      background-color: blue;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .deleteButton {
+      background-color: red;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="inputArea">
+    <input type="text" class="inputBox">
+    <button class="addButton">+</button>
+  </div>
+
+
+  <script>
+    var inputArea = document.getElementById('inputArea');
+    var addButton = document.getElementsByClassName('addButton')[0];
+
+    addButton.addEventListener('click', function () {
+      var newInputBoxWrapper = document.createElement('div');
+      newInputBoxWrapper.className = 'inputBoxWrapper';
+
+      var newInput = document.createElement('input');
+      newInput.type = 'text';
+      newInput.className = 'inputBox';
+
+      var deleteButton = document.createElement('button');
+      deleteButton.innerHTML = '-';
+      deleteButton.className = 'deleteButton';
+
+      newInputBoxWrapper.appendChild(newInput);
+      newInputBoxWrapper.appendChild(deleteButton);
+
+      inputArea.insertBefore(newInputBoxWrapper, addButton);
+
+      // Add event listener for the new delete button
+      deleteButton.addEventListener('click', function () {
+        this.parentElement.remove();
+      });
+    });
+  </script>
+
+</body>
+
+</html>

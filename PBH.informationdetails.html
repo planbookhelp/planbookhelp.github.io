@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+	<meta charset="utf-8" />
+	<!-- 浏览器图标 -->
+	<link rel="Shortcut Icon" href="./PBH资料/PBH-logo-7-白底黑字-ico.ico">
+	<link rel="stylesheet" href="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<!-- 浏览器标题 -->
+	<title>PBH官网-信息详情</title>
+	<!--设置过期时间设置0为直接过期并清除缓存-->
+	<!-- <meta http-equiv="Expires" content="0"> -->
+	<!--设置不缓存页面-->
+	<!-- <meta http-equiv="Pragma" content="no-cache"> -->
+	<!--设置不修改消息存储-->
+	<!-- <meta http-equiv="Cache-control" content="no-cache"> -->
+	<!--同上-->
+	<meta http-equiv="Cache" content="no-cache">
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+		name='viewport' />
+	<!-- 字体样式 -->
+	<link rel="stylesheet" href="./css/字体.css">
+	<!-- Main CSS -->
+	<link href="./css/main.css" rel="stylesheet" />
+	<!--Animation CSS -->
+	<link href="./css/aos.css" rel="stylesheet" />
+	<style>
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		p,
+		div {
+			-webkit-user-select: none;
+			/* Chrome, Safari, Opera */
+			-moz-user-select: none;
+			/* Firefox */
+			-ms-user-select: none;
+			/* IE 10+ */
+			user-select: none;
+			/* Standard syntax */
+		}
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			font-family: XXH;
+			text-align: center;
+		}
+
+		@font-face {
+			font-family: 'XXH';
+			src: url(./PBH资料/字体/LXGWWenKai-Regular.ttf);
+		}
+
+		/* 通知标题 */
+		.title {
+			font-size: 2rem;
+			font-weight: bold;
+			text-align: center;
+			line-height: 2rem;
+		}
+
+		/* 通知内容 */
+		.text>p {
+			font-size: 0.9rem;
+			line-height: 1.5rem;
+		}
+
+		.container-tz {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+		}
+
+		.box {
+			width: 30%;
+			margin-bottom: 1rem;
+			padding: 1rem;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			background-color: rgb(218, 86, 86);
+		}
+
+		.box:nth-child(4n+2) {
+			background-color: rgb(238, 223, 89);
+
+		}
+
+		.box:nth-child(4n+3) {
+			background-color: rgb(180, 107, 223);
+
+		}
+
+		.box:nth-child(4n+4) {
+			background-color: rgb(97, 164, 219);
+
+		}
+
+		@media (max-width: 768px) {
+			.container-tz {
+				flex-wrap: nowrap;
+				flex-direction: column;
+			}
+
+			.box {
+				width: 100%;
+			}
+		}
+
+		.box:hover {
+			transform: scale(1.05);
+			box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+		}
+
+		.box .title {
+			font-weight: bold;
+		}
+
+		.box .content {
+			display: none;
+			margin-top: 1rem;
+		}
+
+		.box.active .content {
+			display: block;
+		}
+
+		.btn-red {
+			padding: 10px 20px;
+			background-color: #c74b4b;
+			color: #FFFFFF;
+		}
+
+		.btn-green {
+			padding: 10px 20px;
+			background-color: #4fcc4f;
+			color: #FFFFFF;
+		}
+
+		.btn-blue {
+			padding: 10px 20px;
+			background-color: #4eb8c8;
+			color: #FFFFFF;
+		}
+
+		.btn-css {
+			display: inline-block;
+			padding: 10px 20px;
+			text-decoration: none;
+			transition: transform 0.3s, color 0.3s;
+		}
+
+		.btn-css:hover {
+			transform: scale(1.2);
+			color: #000000;
+		}
+	</style>
+
+</head>
+
+<body>
+	<!-- 导航栏 -->
+	<nav class="topnav navbar navbar-expand-lg navbar-dark bg-black" style=" position: sticky;
+	top: 0px;
+	z-index: 10;">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="./PBH-logo.html">
+					<img src="./PBH资料/测试图标.png" alt="" width="60px">
+				</a>
+			</div>
+			<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02"
+				aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="navbar-collapse collapse" id="navbarColor02">
+				<ul class="navbar-nav mr-auto d-flex align-items-center">
+					<li class="nav-item ">
+						<a class="nav-link" href="./index.html">首页</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="./PBH.planing.html">启划</a>
+					</li>
+					<li class="nav-item active " style="font-size: 20px">
+						<a class="nav-link" href="#">信息详情</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="./PBH.account.html">账户</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- 最新通知 -->
+	<div class="jumbotron">
+		<div class="title">
+			关于网站开启新一轮开发周期的通知
+		</div>
+		<div class="text">
+			<br>
+			<p style="text-indent: 2em;">
+				为了进一步完善网站功能，满足多样化的需求，现在我们将开启新一轮的网站开发周期。该周期为期30天左右在该周期中，我们将不定期上传新功能但不会通知。细心的朋友们应该注意到了我们使用的专属logo和地月动画。
+			</p>
+			<p style="text-indent: 2em;">
+				我们将开发完成以下功能：
+				1：网站UI升级。
+				2：更多实用工具。
+			</p>
+			<p style="text-indent: 2em;">如果您对本网站有疑问或建议，可发送邮件至silybyaw@163.com联系我们。</p>
+			<p style="text-align: right;">PBH团队</p>
+			<p style="text-align: right;">2023年8月9日</p>
+
+		</div>
+		<hr>
+		<!-- 历史通知 -->
+		<h5 style="text-align: center;">以下是历史通知，点击即可查看详情。</h5>
+
+		<div class="container-tz">
+			<!-- box7 -->
+			<div class="box">
+				<div class="title">关于庆祝端午节的通知</div>
+				<div class="content">
+					<p style="text-indent: 2em;">
+						一句平淡如水的问候，很轻；一声平常如纸的祝福，很真；采一片清香的粽叶，包一颗香甜的粽子，装入真情的信息里。祝大家端午节安康！
+					</p>
+					<p style="text-indent: 2em;">如果您对本网站有疑问或建议，可发送邮件至silybyaw@163.com联系我们。</p>
+					<p style="text-align: right;">PBH团队</p>
+					<p style="text-align: right;">2023年6月22日</p>
+				</div>
+			</div>
+			<!-- box6 -->
+			<div class="box">
+				<div class="title">关于庆祝父亲节的通知</div>
+				<div class="content">
+					<p style="text-indent: 2em;">
+						恐惧时，父爱是一块踏脚的石；黑暗时，父爱是一盏照明的灯；枯竭时，父爱是一湾生命之水；努力时，父爱是精神上的支柱；成功时，父爱又是鼓励与警钟。——梁凤仪。本团队祝愿全天下父亲，节日快乐。
+					</p>
+					<p style="text-indent: 2em;">如果您对本网站有疑问或建议，可发送邮件至silybyaw@163.com联系我们。</p>
+					<p style="text-align: right;">PBH团队</p>
+					<p style="text-align: right;">2023年6月18日</p>
+				</div>
+			</div>
+			<!-- box5 -->
+			<div class="box">
+				<div class="title">关于本团队使用新logo、使用新的样式和上线小游戏的通知</div>
+				<div class="content">
+					<p style="text-indent: 2em;">
+						我们现在发布我们团队的新logo
+						<img class="look-logo" src="./PBH资料/PBH-logo-7-黑底白字.png" alt="" width="30px">(选中可查看大图)。
+						<style>
+							.look-logo:hover {
+								width: 20rem;
+							}
+						</style>
+					</p>
+					<p style="text-indent: 2em;">
+						该logo由团队成员黄炳设计，经过团队内部投票表决同意该logo的使用。他对“PBH”这三个字母进行了变形处理，字母“P”的“小眼睛”并没有把它放在居中放置，而是偏右靠下，增添了一份生动感，该logo充满了活力与特色，采用黑底白色作为基本标识，衍生出其它的颜色搭配如该网站的ico图标是白底黑色的。
+					</p>
+					<p style="text-indent: 2em;">
+						同时我们修改了查看历史通知的样式，采用折叠的方式隐藏起来，点击即可查看内容。修改了查看PBH网站的版权、隐私政策和法律声明的样式，采用按钮的方式隐藏起来，点击即可查看内容。
+					</p>
+					<p style="text-indent: 2em;">
+						在最后我们上线贪吃蛇和2028两个小游戏，在网站的首页，其中贪吃蛇游戏只能在电脑上玩，2028游戏可以在手机上玩，希望大家喜欢。
+					</p>
+					<p style="text-indent: 2em;">如果您对本网站有疑问或建议，可发送邮件至silybyaw@163.com联系我们。</p>
+					<p style="text-align: right;">PBH团队</p>
+					<p style="text-align: right;">2023年6月10日</p>
+				</div>
+			</div>
+			<!-- box4 -->
+			<div class="box">
+				<div class="title">关于网站归属权变更和团队加入新成员的通知</div>
+				<div class="content">
+					<p style="text-indent: 2em;">
+						从今日起本网站的所有权归PBH团队所有，但由于前期没有规划好，导致在工业和信息化部和公安部的备案信息仍旧属于个人。本团队将及时调整备案信息，以免造成不必要的麻烦。
+					</p>
+					<p style="text-indent: 2em;">同时在这里我们介绍本团队加入的新成员：江亚航，他主要负责艺术设计。</p>
+					<p style="text-indent: 2em;">如果您对本网站有疑问或建议，可发送邮件至silybyaw@163.com联系我们。</p>
+					<p style="text-align: right;">PBH团队</p>
+					<p style="text-align: right;">2023年6月4日</p>
+				</div>
+			</div>
+			<!-- box3 -->
+			<div class="box">
+				<div class="title">关于网站上线生成随机密码工具的通知</div>
+				<div class="content">
+					<p style="text-indent: 2em;">
+						日常生活中，我们使用的各种app，登录的网站，基本都需要去注册并登录才能使用。你是否把所有的密码都设置成了同一个？
+					</p>
+					<p style="text-indent: 2em;">
+						其实这是个非常不安全的行为，对此我们开发并正式上线了“生成随机密码”实用小工具。由多种字符组合而成的密码，是比较安全、不易破解的。
+					</p>
+					<p style="text-indent: 2em;">
+						此工具已默认删去“1”,“0”,“i”,“I”,“l”,“L”,“o”,“O”等相似字符。允许自定义字符来组成密码，密码长度设定在6-30位之间，满足了绝大部分需求。生成的密码，可以一键复制，方便使用。
+					</p>
+					<p style="text-indent: 2em;">
+						如果您对本网站有疑问或建议，可发送邮件至silybyaw@163.com联系我们。
+					</p>
+					<p style="text-align: right;">PBH团队</p>
+					<p style="text-align: right;">2023年5月15日</p>
+				</div>
+			</div>
+			<!-- box2 -->
+			<div class="box">
+				<div class="title">关于庆祝母亲节和网站上传新内容的通知</div>
+				<div class="content">
+					<p style="text-indent: 2em;">世界上有一种最美丽的声音，那便是母亲的呼唤。——但丁。本团队祝愿全天下母亲，节日快乐。</p>
+					<p style="text-indent: 2em;">
+						同时本网站更新了PBH的版权、隐私政策和法律声明内容和上传了PBH-logo.html文件，点击网站的导航栏logo即可访问。当然了这其实是挖的第四个坑，请相信我们，我们会来填坑的。</p>
+					<p style="text-indent: 2em;">如果您对本网站有疑问或建议，可发送邮件至silybyaw@163.com联系我们。</p>
+					<p style="text-align: right;">PBH团队</p>
+					<p style="text-align: right;">2023年5月14日</p>
+				</div>
+			</div>
+			<!-- box1 -->
+			<div class="box">
+				<div class="title">关于PBH网站上线的通知</div>
+				<div class="content">
+					<p style="text-indent: 2em;">经过两个月半时间的开发，PBH网站正式上线啦！首先不要去管什么PBH，这不是重点。本网站开发了一些实用的小工具，希望大家喜欢。</p>
+					<p style="text-indent: 2em;">本网站会不定期的更新有意思的东西，在一些节日会更新页面，望多多关注，收藏本网站。</p>
+					<p style="text-indent: 2em;">如果您对本网站有疑问或建议，可发送邮件至silybyaw@163.com联系我们。</p>
+					<p style="text-align: right;">PBH团队</p>
+					<p style="text-align: right;">2023年5月4日</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- 通知折叠js -->
+	<script>
+		const boxes = document.querySelectorAll('.box');
+		boxes.forEach(box => {
+			box.addEventListener('click', () => {
+				if (!box.classList.contains('active')) {
+					boxes.forEach(otherBox => {
+						if (otherBox !== box && otherBox.classList.contains('active')) {
+							otherBox.classList.remove('active');
+						}
+					});
+				}
+				box.classList.toggle('active');
+			});
+		});
+	</script>
+
+	<!-- 网站信息 -->
+	<h5 style="text-align: center;">以下是关于本网站的版权说明、隐私政策和法律声明，点击即可查看详情。</h5>
+	<!-- 三个弹窗展示 -->
+	<section class="pt-4 pb-5" data-aos="fade-up">
+		<div class="row">
+			<div class="col-md-4">
+				<!-- Button 1-->
+				<button type="button" class="btn btn-red w-100 btn-css" data-toggle="modal" data-target="#exampleModalCenter"
+					id="btn-ban">
+					版权说明</button>
+			</div>
+			<div class="col-md-4">
+				<!-- Button 2-->
+				<button type="button" class="btn btn-green w-100 btn-css" data-toggle="modal" data-target="#exampleModalCenter2"
+					id="btn-yin">
+					隐私政策</button>
+			</div>
+			<div class="col-md-4">
+				<!-- Button 3-->
+				<button type="button" class="btn btn-blue w-100 btn-css" data-toggle="modal" data-target="#exampleModalCenter3"
+					id="btn-fa">
+					法律声明</button>
+			</div>
+
+		</div>
+	</section>
+	<!-- 弹窗1 -->
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header border-0">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">点击关闭</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="pb-4 pr-4 pl-4">
+						<img src="./PBH资料/版权说明.png" style="width: 25rem;text-align: center;">
+						<h3 class="heading mt-4">版权说明</h3>
+						<p>1.“PBH”和“<img src="./PBH资料/PBH-logo-7-黑底白字.png" alt=""
+								style="width: 25px;">”标识由PBH团队独创并使用。本团队依法享有该网站名称权专用权与该标识有关的一切法律权利及经济利益均归属于本团队，并受到中华人民共和国法律的严格保护，禁止任何单位或个人非法使用或进行仿冒、混淆或误导式使用。
+						</p>
+						<p>
+							2.如果本内容有任何变更，我们将在此页面及时发布，请定期访问本页面，查看本内容是否有任何更新或变更。
+						</p>
+						<P>
+							3.欢迎就本内容提出问题与意见。与我们求取得联系，请发送邮件至silybyaw@163.com，我们将努力尽快处理您的需求。
+						</P>
+						<p style="text-align: right;">PBH团队</p>
+						<p style="text-align: right;">最新修改时间：2023年6月11日</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 弹窗2 -->
+	<div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalCenterTitle2" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header border-0">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">点击关闭</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="pb-4 pr-4 pl-4 ">
+						<img src="./PBH资料/隐私政策.png" style="width: 25rem;text-align: center;">
+						<h3 class="heading mt-4">隐私政策</h3>
+						<p>
+							1.本网页属于静态页面，不向您收集或保留任何信息。
+
+						</p>
+						<p>
+							2.如果本内容有任何变更，我们将在此页面及时发布，请定期访问本页面，查看本内容是否有任何更新或变更。
+						</p>
+						<P>
+							3.欢迎就本内容提出问题与意见。与我们求取得联系，请发送邮件至silybyaw@163.com，我们将努力尽快处理您的需求。
+						</P>
+						<p style="text-align: right;">PBH团队</p>
+						<p style="text-align: right;">最新修改时间：2023年5月14日</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 弹窗3 -->
+	<div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalCenterTitle3" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header border-0">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">点击关闭</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="pb-4 pr-4 pl-4">
+						<img src="./PBH资料/法律声明.png" style="width: 25rem;text-align: center;">
+						<h2 class="heading mt-4">法律声明</h2>
+						<p>
+							1.网页版式设计版权。本网站及本工作室对本网站使用的网页版式设计依法享有著作权，禁止任何单位或个人未经书面授权进行复制、仿冒、剽窃、抄袭或非法使用。
+						</p>
+						<p>
+							2.网页内容版权。目前本网站登载的文章、照片、声音、录像、图画、图表及其他信息内容。上述全部内容均没有以盈利为目的。其全部著作权均依法归属于本网站及本团队，禁止任何单位或个人未经书面授权进行复制、变造、剽窃、抄袭、转载、翻译、分发或非法使用。
+						</p>
+						<p>
+							3.侵权行为之认定及责任追究。
+							凡未经与本团队书面协议并取得授权而以任何方式对上述权利内容或受法律保护之权利实施侵权行为者，本团队有权采取各种法律措施(包括但不限于公证证据保全、行政
+							控告或法律诉讼)追究其侵权及赔偿责任，包括但不限于追索侵权者获取的侵权利益、索赔本团队遭受的经济损失、追偿本团队为维权支出的公证费、律师费、交通差旅费等一切费用。
+						</p>
+						<p>
+							4.免责。
+							4.1.访问者访问本网站任何内容或使用本网站提供的任何功能之前，均明确承诺已对本页全部法律声明条款作了详细阅读和理解，凡因访问者忽视有关法律声明而产生之任何可能针对本网站的索赔或争议主张，本网站及本工作室均予无条件免责。
+							4.2.本网站不作任何类型的担保，特别是本网站在任何情形下均不被视为作出任何默示的担保,不担保信息服务一定能满足用户的要求，也不担保信息服务不会中断、迟滞或延误，不担保信息服务的及时性、安全性、无错误等。访问者理解并接受：任何通过本网站信息服务取得信息资料之可靠性取决于访问者自己的判断或接纳，其自己承担所有可能的风险和责任。
+							4.3.对于访问者以及其他主体因使用网络服务所可能遭受的任何直接的、间接的、偶然的、特殊的及或继发的损失(包括但不限于本网站及链接网站可能具有的电脑病毒所引起的损失、网站可能的设计缺陷所引起的损失、可能的知识产权等财产损失、可能的合同损失以及可能的侵权损失)，除非有证据本网站存在故意性质证明的恶意，否则本网站不承担任何形式的责任。对于访问者通过本网站提供的链接或者介绍等所获取的其他
+							网站、其他机构的各类信息，我们不对其真实性、有效性、完整性以及准确性作任何性质的保证，我们亦不对其承担任何形式的责任。
+							4.4.本网站给予合理注意并适当谨慎对待网站登载信息中可能涉及他方著作权或其他权利的部分，但本网站在任何时候均不保证及时、或随时、或逐一、或完全审查和甄别登载的信息，若有可能的著作权权利人对有关信息内容主张其权利，则应当向本网站作出书面通知并在同时提供其真实身份资料和附具相关初步证据，本网站将在接到该通
+							知后之合理工作时间内进行审查和判断，在一般情况下，本网站将尽量对主张权利人及 其主张的权益给予充分的尊重并采取相应适当的措施以避免双方的无谓争议。
+						</p>
+						<p>
+							5.如果本内容有任何变更，我们将在此页面及时发布，请定期访问本页面，查看本内容是否有任何更新或变更。
+						</p>
+						<P>
+							6.欢迎就本内容提出问题与意见。与我们求取得联系，请发送邮件至silybyaw@163.com，我们将努力尽快处理您的需求。
+						</P>
+						<p style="text-align: right;">PBH团队</p>
+						<p style="text-align: right;">最新修改时间：2023年5月14日</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 底部 -->
+	<footer class="bg-black pb-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-6 col-md">
+					<h5 class="mb-4 text-white text-left">网站信息</h5>
+					<ul class="list-unstyled text-small">
+						<li><a class="text-muted" href="https://beian.miit.gov.cn/#/Integrated/index"
+								target="_blank">浙ICP备2023009002号-1</a></li>
+						<li>
+							<a class="text-muted"
+								href="https://www.beian.gov.cn/portal/recordQuery?token=16b3ea0e-49de-4d39-a338-5e9fbc0734a2"
+								target="_blank">浙公网安备33068102000885</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-6 col-md">
+					<h5 class="mb-4 text-white text-left">鸣谢</h5>
+					<ul class="list-unstyled text-small">
+						<li><a class="text-muted" href="###">技术、运维：黄炳</a></li>
+						<li><a class="text-muted" href="###">UI设计：袁文靖</a></li>
+						<li><a class="text-muted" href="###">动漫、视效：吴开新</a></li>
+						<li><a class="text-muted" href="###">艺术设计：江亚航</a></li>
+					</ul>
+				</div>
+				<div class="col-6 col-md">
+					<h5 class="mb-4 text-white text-left">相关信息</h5>
+					<ul class="list-unstyled text-small">
+						<li><a class="text-muted" href="../../PBH-信息详情.html#btn-ban">版权说明</a></li>
+						<li><a class="text-muted" href="../../PBH-信息详情.html#btn-yin">隐私政策</a></li>
+						<li><a class="text-muted" href="../../PBH-信息详情.html#btn-fa">法律声明</a></li>
+						<li><a class="text-muted" href="../../PBH-信息详情.html">联系我们</a></li>
+					</ul>
+				</div>
+				<div class="col-6 col-md">
+					<h5 class="mb-4 text-white text-left">友情链接</h5>
+					<ul class="list-unstyled text-small">
+						<li><a class="text-muted" href="https://xiaozaza.com/">小砸砸资源屋</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<script>
+		//js后缀加个时间戳每回更新都会改变，浏览器视其为新的js不会进行缓存
+		document.write('<script type="text/javascript" src="js/test.js?time=' + new Date().getTime() + '"><' + '/' + 'script>');
+		//css也同上
+		document.write('<link rel="stylesheet" href="css/test.css?time=' + new Date().getTime() + '"/>');
+	</script>
+	<!-- js文件 -->
+	<script src="./js/jquery.min.js" type="text/javascript"></script>
+	<script src="./js/popper.min.js" type="text/javascript"></script>
+	<script src="./js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="./js/share.js" type="text/javascript"></script>
+	<script src="./js/functions.js" type="text/javascript"></script>
+
+	<!-- 动画文件 -->
+	<script src="./js/aos.js" type="text/javascript"></script>
+	<noscript>
+		<style>
+			*[data-aos] {
+				display: block !important;
+				opacity: 1 !important;
+				visibility: visible !important;
+			}
+		</style>
+	</noscript>
+	<script>
+		AOS.init({
+			duration: 700
+		});
+	</script>
+
+
+</body>
+
+</html>

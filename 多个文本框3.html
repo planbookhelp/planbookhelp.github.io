@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Dynamic Input Boxes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #inputArea {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      width: 80%;
+    }
+
+    .inputBoxWrapper {
+      display: flex;
+      align-items: center;
+      width: calc(25% - 20px);
+      margin-bottom: 10px;
+    }
+
+    .inputBox {
+      flex: 1;
+      padding: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      background-color: #f0f0f0;
+      position: relative;
+      /* 添加相对定位 */
+    }
+
+    /* 新增样式，设置序号的背景色和文字颜色 */
+    .inputBox::before {
+      content: attr(data-number);
+      display: inline-block;
+      width: 20px;
+      height: 100%;
+      background-color: green;
+      color: white;
+      text-align: center;
+      line-height: 30px;
+      /* 与输入框高度一致 */
+      margin-right: 5px;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      position: absolute;
+      /* 绝对定位相对于 inputBox */
+      left: 0;
+    }
+
+    .addButton,
+    .deleteButton {
+      background-color: blue;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .deleteButton {
+      background-color: red;
+    }
+
+    .addButton:last-child,
+    .deleteButton:last-child {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="inputArea">
+    <div class="inputBoxWrapper">
+      <input type="text" class="inputBox" data-number="1">
+      <button class="addButton">+</button>
+    </div>
+  </div>
+
+  <script>
+    window.onload = function () {
+      var inputArea = document.getElementById('inputArea');
+      var addButton = document.querySelector('.addButton');
+
+      var counter = 2; // 初始序号
+
+      inputArea.addEventListener('click', function (event) {
+        if (event.target.classList.contains('addButton')) {
+          // 获取之前文本框的值
+          var previousValue = event.target.previousElementSibling.value;
+
+          // 创建新的输入框容器
+          var newInputBoxWrapper = document.createElement('div');
+          newInputBoxWrapper.className = 'inputBoxWrapper';
+
+          // 创建新的输入框和删除按钮
+          var newInput = document.createElement('input');
+          newInput.type = 'text';
+          newInput.className = 'inputBox';
+          newInput.value = previousValue || counter; // 如果之前文本框有值，则复制之前的值，否则使用递增的序号
+          newInput.setAttribute('data-number', counter); // 设置 data-number 属性
+          counter++;
+
+          var deleteButton = document.createElement('button');
+          deleteButton.innerHTML = '-';
+          deleteButton.className = 'deleteButton';
+
+          // 将新的输入框和删除按钮添加到容器中
+          newInputBoxWrapper.appendChild(newInput);
+          newInputBoxWrapper.appendChild(deleteButton);
+
+          // 为新的删除按钮添加点击事件监听器
+          deleteButton.addEventListener('click', function () {
+            this.parentElement.remove();
+            updateInputValues(); // 在删除后更新所有文本框的值
+          });
+
+          // 将新的输入框容器插入到已有的输入框容器之前
+          inputArea.insertBefore(newInputBoxWrapper, event.target.parentElement);
+
+          updateInputValues(); // 在添加后更新所有文本框的值
+        }
+      });
+
+      // 更新所有文本框的值
+      function updateInputValues() {
+        var inputBoxes = document.querySelectorAll('.inputBox');
+        inputBoxes.forEach(function (inputBox, index) {
+          inputBox.value = index + 1;
+          inputBox.setAttribute('data-number', index + 1);
+        });
+      }
+
+      // 监听键盘事件
+      document.addEventListener('keydown', function (event) {
+        var activeElement = document.activeElement;
+
+        // 检查按下的键是 Enter 键，并且焦点在文本框上
+        if (event.key === 'Enter' && activeElement.classList.contains('inputBox')) {
+          event.preventDefault(); // 阻止默认的 Enter 操作
+          addButton.click(); // 模拟点击添加按钮
+        }
+
+        // 检查按下的键是 Backspace 键，并且焦点在文本框上
+        if (event.key === 'Backspace' && activeElement.classList.contains('inputBox')) {
+          event.preventDefault(); // 阻止默认的 Backspace 操作
+          var deleteButton = activeElement.nextElementSibling;
+          if (deleteButton && deleteButton.classList.contains('deleteButton')) {
+            deleteButton.click(); // 模拟点击删除按钮
+          }
+        }
+      });
+    };
+  </script>
+
+</body>
+
+</html>
