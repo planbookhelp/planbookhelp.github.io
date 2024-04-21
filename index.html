@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+	<meta charset="utf-8" />
+	<!-- 浏览器图标 -->
+	<link rel="Shortcut Icon" href="./PBH资料/PBH-logo-7-白底黑字-ico.ico">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<!-- 浏览器标题 -->
+	<title>PBH官网</title>
+	<!-- 强制更新 -->
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+		name='viewport' />
+	<!-- 字体样式 -->
+	<link rel="stylesheet" href="./css/字体.css">
+	<!-- Main CSS -->
+	<link href="./css/main.css" rel="stylesheet" />
+	<!--Animation CSS -->
+	<link href="./css/aos.css" rel="stylesheet" />
+	<style>
+		@font-face {
+			font-family: 'XXH';
+			src: url(./PBH资料/字体/LXGWWenKai-Regular.ttf);
+		}
+
+
+		.tz {
+
+			width: auto;
+			height: 40px;
+			overflow: hidden;
+		}
+
+		.xx {
+			line-height: 25px;
+			font-size: 20px;
+			animation: gdtz 30s linear 1.5s;
+		}
+
+		@keyframes gdtz {
+			0% {
+				margin-top: 0;
+			}
+
+			100% {
+				margin-top: -260px;
+
+			}
+		}
+	</style>
+
+</head>
+
+<body>
+	<!-- 滚动通知 -->
+	<div
+		style="width: auto;height:60px;background-color:rgb(0, 0, 0);color: rgb(255, 255, 255);display: grid;justify-content: center;margin-top: 1%;">
+		<h6>
+			<center>
+				PBH
+			</center>
+		</h6>
+		<div class="tz" style="background-color: rgb(0, 0, 0);">
+			<h4 class="xx" style="background-color: rgb(0, 0, 0); color: rgb(255, 255, 255);text-align: center;">
+				<a href="./PBH.informationdetails.html">通知</a>
+			</h4>
+			<p style="text-align: center;">祝宁波城市职业技术学院</p>
+			<p style="text-align: center;">职业生涯规划大赛校决赛</p>
+			<p style="text-align: center;">取得圆满成功</p>
+			<p style="text-align: center;">2023年11月17日</p>
+		</div>
+	</div>
+	<!-- 导航栏 -->
+	<nav class="topnav navbar navbar-expand-lg navbar-dark bg-primary" style=" position: sticky;top: 0px;z-index: 10;">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="./PBH.logo.html">
+					<img src="./PBH资料/PBH-logo/浙江省教育评估中心logo与文字组合图案.jpg" alt="" width="60px">
+				</a>
+			</div>
+			<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02"
+				aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="navbar-collapse collapse" id="navbarColor02">
+				<ul class="navbar-nav mr-auto d-flex align-items-center">
+					<li class="nav-item active" style="font-size: 20px;">
+						<a class="nav-link" href="./PBH.logo.html">首页</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="./PBH.planing.html">启划</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="./PBH.informationdetails.html">信息详情</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="./PBH.account.html">账户</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- 两个游戏 -->
+	<div class="jumbotron">
+		<ul>
+			<!-- <li>
+				<a href="./暑期实践网站展示/index.html">
+					<img src="../PBH网站开发-最新/PBH资料/暑期实践封面.png" alt="" style="width: 40%; margin: auto 0; ">
+				</a>
+			</li> -->
+			<li>
+				<a href="./PBH.snakes.html">贪吃蛇游戏</a>
+			</li>
+			<li>
+				<a href="./PBH.2048.html">2048游戏</a>
+			</li>
+			<li>
+				<a href="./PBH.messageboard.html">留言板</a>
+			</li>
+		</ul>
+
+
+	</div>
+	<hr>
+	<!-- 后续的功能展示 -->
+	<section class="pt-4 pb-5" data-aos="fade-up">
+		<h2 style="text-align: center;font-family: XXH;">实用小工具</h2>
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="card-body">
+					<h3>扔骰子</好>
+						<style>
+							#dice {
+								min-width: 300px;
+								min-height: 300px;
+								background-color: #879abd;
+								border-radius: 10px;
+								display: flex;
+								justify-content: center;
+								align-items: center;
+							}
+
+							#dice-value {
+								font-size: 80px;
+							}
+						</style>
+						<div id="dice">
+							<div id="dice-value"></div>
+							<button onclick="rollDice()">点击出现数字</button>
+						</div>
+						<script>
+							function rollDice() {
+								// 随机生成1到6之间的整数作为骰子点数
+								var diceValue = Math.floor(Math.random() * 6) + 1;
+
+								// 将点数显示在界面上
+								var diceElement = document.getElementById("dice-value");
+								diceElement.innerHTML = diceValue.toString();
+							}
+						</script>
+				</div>
+			</div>
+			<br>
+			<div class="col-lg-6">
+				<div class="card-body">
+					<h3>生成随机密码</好>
+						<link rel="stylesheet" href="./css/生成随机密码.css">
+						<div class="password-generator">
+							<form id="password-form">
+								<label>已默认删去“1”,“i”,“I”等相似字符。</label>
+								<br>
+								<label for="numbers">数字:</label>
+								<input type="text" id="numbers" value="23456789"><br>
+								<label for="lowercase">小写字母:</label>
+								<input type="text" id="lowercase" value="abcdefghjkmnpqrstuvwxyz"><br>
+								<label for="uppercase">大写字母:</label>
+								<input type="text" id="uppercase" value="ABCDEFGHJKMNPQRSTUVWXYZ"><br>
+								<label for="symbols">特殊符号:</label>
+								<input type="text" id="symbols" value="!@#$%&()+-*/=[]{}.?"><br>
+							</form>
+							<div class="slider-container">
+								<label for="password-length">拖动滑块修改密码长度:</label>
+								<input type="range" id="password-length" min="6" max="30" value="6">
+								<span id="password-length-indicator">6</span>
+							</div>
+							<button id="generate-passwords">点击生成密码</button>
+							<div class="progress-bar">
+								<div class="progress"></div>
+							</div>
+							<div class="passwords-container"></div>
+							<br>
+							<br>
+						</div>
+						<script>
+							const numbersInput = document.getElementById("numbers");
+							const lowercaseInput = document.getElementById("lowercase");
+							const uppercaseInput = document.getElementById("uppercase");
+							const symbolsInput = document.getElementById("symbols");
+							const lengthSlider = document.getElementById("password-length");
+							const lengthIndicator = document.getElementById("password-length-indicator");
+							const generateButton = document.getElementById("generate-passwords");
+							const progressBar = document.querySelector(".progress");
+							const passwordsContainer = document.querySelector(".passwords-container");
+
+							let numbers = numbersInput.value.split("");
+							let lowercase = lowercaseInput.value.split("");
+							let uppercase = uppercaseInput.value.split("");
+							let symbols = symbolsInput.value.split("");
+							// 默认情况下，密码由数字、小写字母、大写字母和特殊符号组成
+							let charset = [...numbers, ...lowercase, ...uppercase, ...symbols];
+
+							// 根据用户修改后的内容进行排序
+							numbersInput.addEventListener("keyup", () => {
+								numbers = numbersInput.value.split("");
+								charset = [...numbers, ...lowercase, ...uppercase, ...symbols];
+							});
+
+							lowercaseInput.addEventListener("keyup", () => {
+								lowercase = lowercaseInput.value.split("");
+								charset = [...numbers, ...lowercase, ...uppercase, ...symbols];
+							});
+
+							uppercaseInput.addEventListener("keyup", () => {
+								uppercase = uppercaseInput.value.split("");
+								charset = [...numbers, ...lowercase, ...uppercase, ...symbols];
+							});
+
+							symbolsInput.addEventListener("keyup", () => {
+								symbols = symbolsInput.value.split("");
+								charset = [...numbers, ...lowercase, ...uppercase, ...symbols];
+							});
+
+							// 当用户拖动进度条时，动态显示密码长度
+							lengthSlider.addEventListener("input", () => {
+								lengthIndicator.textContent = lengthSlider.value;
+							});
+
+							// 点击生成密码按钮
+							generateButton.addEventListener("click", () => {
+								// 获取密码长度
+								const passwordLength = parseInt(lengthSlider.value);
+
+								// 判断密码长度是否满足6-30之间的范围
+								// if (passwordLength < 6 || passwordLength > 30) {
+								//     alert("密码长度必须在6-30之间！");
+								//     return;
+								// }
+
+								// 清空密码列表
+								passwordsContainer.innerHTML = "";
+
+								// 循环6次生成密码
+								for (let i = 0; i < 6; i++) {
+									const password = generatePassword(passwordLength, charset);
+									const passwordElement = document.createElement("div");
+									passwordElement.classList.add("password");
+									passwordElement.textContent = password;
+									const copyButton = document.createElement("button");
+									copyButton.classList.add("copy-button");
+									copyButton.textContent = "一键复制";
+									copyButton.addEventListener("click", () => {
+										copyPasswordToClipboard(password);
+										alert("您已复制此密码!");
+									});
+									passwordElement.appendChild(copyButton);
+									passwordsContainer.appendChild(passwordElement);
+								}
+							});
+
+							// 生成密码的函数
+							function generatePassword(length, charset) {
+								let password = "";
+								for (let i = 0; i < length; i++) {
+									password += charset[Math.floor(Math.random() * charset.length)];
+								}
+								return password;
+							}
+
+							// 复制密码到剪切板
+							function copyPasswordToClipboard(password) {
+								const textarea = document.createElement("textarea");
+								textarea.value = password;
+								document.body.appendChild(textarea);
+								textarea.select();
+								document.execCommand("copy");
+								document.body.removeChild(textarea);
+							}
+
+						</script>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- 底部 -->
+	<footer class="bg-black pb-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-6 col-md">
+					<h5 class="mb-4 text-white">网站信息</h5>
+					<ul class="list-unstyled text-small">
+						<li><a class="text-muted" href="https://beian.miit.gov.cn/#/Integrated/index"
+								target="_blank">浙ICP备2023009002号-1</a></li>
+						<li>
+							<a class="text-muted"
+								href="https://www.beian.gov.cn/portal/recordQuery?token=16b3ea0e-49de-4d39-a338-5e9fbc0734a2"
+								target="_blank">浙公网安备33068102000885</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-6 col-md">
+					<h5 class="mb-4 text-white">鸣谢</h5>
+					<ul class="list-unstyled text-small">
+						<li><a class="text-muted" href="###">技术、运维：黄炳</a></li>
+						<li><a class="text-muted" href="###">UI设计：袁文靖</a></li>
+						<li><a class="text-muted" href="###">动漫、视效：吴开新</a></li>
+						<li><a class="text-muted" href="###">艺术设计：江亚航</a></li>
+					</ul>
+				</div>
+				<div class="col-6 col-md">
+					<h5 class="mb-4 text-white">相关信息</h5>
+					<ul class="list-unstyled text-small">
+						<li><a class="text-muted" href="../../PBH-信息详情.html#btn-ban">版权说明</a></li>
+						<li><a class="text-muted" href="../../PBH-信息详情.html#btn-yin">隐私政策</a></li>
+						<li><a class="text-muted" href="../../PBH-信息详情.html#btn-fa">法律声明</a></li>
+						<li><a class="text-muted" href="../../PBH-信息详情.html">联系我们</a></li>
+					</ul>
+				</div>
+				<div class="col-6 col-md">
+					<h5 class="mb-4 text-white">友情链接</h5>
+					<ul class="list-unstyled text-small">
+						<li><a class="text-muted" href="https://xiaozaza.com/">小砸砸资源屋</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- 强制更新 -->
+
+	<script>
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register('/sw.js').then(function (registration) {
+				console.log('Service Worker Registered');
+			}).catch(function (err) {
+				console.log('Service Worker Registration Failed: ', err);
+			});
+		}  
+	</script>
+
+	<script>
+		//js后缀加个时间戳每回更新都会改变，浏览器视其为新的js不会进行缓存
+		document.write('<script type="text/javascript" src="js/test.js?time=' + new Date().getTime() + '"><' + '/' + 'script>');
+		//css也同上
+		document.write('<link rel="stylesheet" href="css/test.css?time=' + new Date().getTime() + '"/>');
+	</script>
+	<!-- js文件 -->
+	<script src="./js/jquery.min.js" type="text/javascript"></script>
+	<script src="./js/popper.min.js" type="text/javascript"></script>
+	<script src="./js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="./js/share.js" type="text/javascript"></script>
+	<script src="./js/functions.js" type="text/javascript"></script>
+
+	<!-- 动画文件 -->
+	<script src="./js/aos.js" type="text/javascript"></script>
+	<noscript>
+		<style>
+			*[data-aos] {
+				display: block !important;
+				opacity: 1 !important;
+				visibility: visible !important;
+			}
+		</style>
+	</noscript>
+	<script>
+		AOS.init({
+			duration: 700
+		});
+	</script>
+
+
+</body>
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Non maxime odit ullam deserunt illo voluptatibus nihil reprehenderit facilis cum dolores consequatur cupiditate veniam, expedita unde molestias, sequi veritatis nulla nisi.
+</html>
