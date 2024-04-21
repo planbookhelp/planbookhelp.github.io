@@ -1,0 +1,74 @@
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+		.dy-bg{
+            margin:0 auto ;
+            text-align: center;
+			background-color: rgb(255, 255, 255);
+			width: 600px;
+			height: 600px;
+			position:relative;
+		}
+		.earth{
+			width: 200px;
+			height: 200px;
+            /* border: 1px solid red; */
+			background: url('../PBH资料/erath.png');
+			background-size: 100% 100%;
+			border-radius: 50%;
+			position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -100px;
+            margin-left: -100px;
+            animation: wr-dq 60s linear infinite;
+		}
+        .moon{
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            /* border: 1px solid red; */
+            animation: wr-dq 5s linear infinite;
+            position: absolute;
+            top: 25%;
+            left: 25%;
+            margin-top: -100px;
+            margin-left: -100px;
+        }
+        @keyframes wr-dq {
+            100%{
+                transform: rotate(360deg);
+            }
+            
+        }
+        .moon::after{
+            content:"";
+            display: block;
+            width: 50px;
+            height: 50px;
+            background: url('../PBH资料/moon.png');
+            background-size: 100% 100%;
+            position: absolute ;
+            top: 1px;
+            left: 1px;
+        }  
+
+        @media screen and (max-width:768px) {
+            .moon{
+            width: 250px;
+            height:250px;
+            top: 35%;
+            left: 34%;
+            margin-top: -100px;
+            margin-left: -100px;
+
+        }
+        .earth{
+            width: 150px;
+            height: 150px;
+        }
+
+        }
+

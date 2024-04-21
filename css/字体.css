@@ -1,0 +1,8 @@
+@font-face {
+    font-family: XXH;
+    src: url(../PBH资料/字体/LXGWWenKai-Regular.ttf);
+}
+
+div,p,span,a,li {
+    font-family: 'XXH';
+}
