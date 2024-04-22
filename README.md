@@ -1,5 +1,6 @@
 # planbookhelp.github.io
-## 欢迎来到PBH现今（2024年5月4日后）官方网站在github上的地址。  一、标题写法：
+## 欢迎来到PBH现今（2024年5月4日后）官方网站在github上的地址。
+一、标题写法：
 第一种方法：
 1、在文本下面加上 等于号 = ，那么上方的文本就变成了大标题。等于号的个数无限制，但一定要大于0个哦。。
 2、在文本下面加上 下划线 - ，那么上方的文本就变成了中标题，同样的 下划线个数无限制。
@@ -41,9 +42,9 @@ protected void onDestroy() {
  
 5、其他引用
 图片  
-![图片名称](https://www.baidu.com/img/bd_logo1.png)  
+![图片名称]([https://www.baidu.com/img/bd_logo1.png](https://planbookhelp.github.io/PBH%E8%B5%84%E6%96%99/PBH-logo/%E9%BB%91%E5%BA%95%E7%99%BD%E5%AD%97.png))  
 链接  
-[链接名称](https://www.baidu.com/)    
+[链接名称]([https://www.baidu.com/](https://planbookhelp.github.io/))    
 6、列表 
 1. 项目1  
 2. 项目2  
