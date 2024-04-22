@@ -42,9 +42,9 @@ protected void onDestroy() {
  
 5、其他引用
 图片  
-![图片名称]([https://www.baidu.com/img/bd_logo1.png](https://planbookhelp.github.io/PBH%E8%B5%84%E6%96%99/PBH-logo/%E9%BB%91%E5%BA%95%E7%99%BD%E5%AD%97.png))  
+![图片名称]([https://planbookhelp.github.io/PBH%E8%B5%84%E6%96%99/PBH-logo/%E9%BB%91%E5%BA%95%E7%99%BD%E5%AD%97.png)  
 链接  
-[链接名称]([https://www.baidu.com/](https://planbookhelp.github.io/))    
+[链接名称]([https://planbookhelp.github.io/])    
 6、列表 
 1. 项目1  
 2. 项目2  
